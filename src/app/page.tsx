@@ -10,16 +10,72 @@ import {
   Shield,
   ArrowRight,
   MousePointer2,
-  // Layout,
   Smartphone,
   Globe,
   Plus,
   User,
-  Target
+  Target,
+  BadgeCheck,
+  Upload,
+  Store,
+  ScanSearch,
+  BarChart3
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function LandingPage() {
+  const workflowSteps = [
+    {
+      icon: User,
+      eyebrow: '01 Merchant Signup',
+      title: 'Create a merchant account and claim your studio.',
+      description:
+        'Merchants register with their name, email, business name, password, and custom store slug to create a branded ViewIt studio.',
+    },
+    {
+      icon: BadgeCheck,
+      eyebrow: '02 Verification',
+      title: 'Verify the account before entering the dashboard.',
+      description:
+        'A verification email activates the merchant account, signs the merchant in, and unlocks access to the product workspace.',
+    },
+    {
+      icon: Upload,
+      eyebrow: '03 Product Creation',
+      title: 'Upload product media and attach a 3D model.',
+      description:
+        'Inside the merchant studio, products are created with photos, pricing, category details, publishing controls, and an optional .glb model for immersive viewing.',
+    },
+    {
+      icon: Plus,
+      eyebrow: '04 Interactive Story',
+      title: 'Enhance the 3D product with hotspots and story layers.',
+      description:
+        'Merchants can add interactive hotspots to the 3D model so buyers and curators discover product details directly inside the experience.',
+    },
+    {
+      icon: Globe,
+      eyebrow: '05 Live Storefront',
+      title: 'Publish the product to a public store page.',
+      description:
+        'Once published, each product becomes visible through the merchant store and marketplace, ready for exploration across browsers and supported AR surfaces.',
+    },
+    {
+      icon: MousePointer2,
+      eyebrow: '06 Buyer Experience',
+      title: 'Curators and buyers view the product in 3D.',
+      description:
+        'Shoppers can open the product page, rotate the 3D model, inspect gallery images, launch AR-compatible viewing, and interact with hotspots in real time.',
+    },
+    {
+      icon: BarChart3,
+      eyebrow: '07 Admin Analytics',
+      title: 'Admins measure AR engagement and product interaction.',
+      description:
+        'The system can track how many AR experiences were launched, how many product views happened, and how many hotspot clicks buyers made across the storefront.',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#000000] text-gray-200 selection:bg-white selection:text-black font-sans overflow-hidden">
 
@@ -32,7 +88,7 @@ export default function LandingPage() {
 
         <div className="hidden md:flex items-center space-x-8 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
-          <a href="#showcases" className="hover:text-white transition-colors">Showcases</a>
+          <a href="#workflow" className="hover:text-white transition-colors">How It Works</a>
           <Link href="/marketplace" className="flex items-center space-x-2 hover:text-white transition-colors">
             <span>Marketplace</span>
             <ArrowRight className="h-3 w-3" />
@@ -119,7 +175,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex items-center space-x-4"
+            className="flex flex-col sm:flex-row items-center gap-4"
           >
             <Link
               href={ROUTES.AUTH.REGISTER}
@@ -129,10 +185,10 @@ export default function LandingPage() {
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
-              href="#showcases"
+              href="#workflow"
               className="flex items-center justify-center px-8 py-4 bg-white text-black hover:bg-gray-200 text-sm font-bold rounded-full transition-all"
             >
-              Discover More
+              How ViewIt Works
             </a>
           </motion.div>
         </div>
@@ -181,6 +237,112 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section id="workflow" className="py-32 px-6 bg-[#050505] relative">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="max-w-3xl space-y-6">
+            <div className="inline-flex items-center space-x-3 px-4 py-1.5 bg-white/[0.02] border border-white/[0.05] rounded-full backdrop-blur-md">
+              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">System Flow</span>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-[1.05]">
+              A full walkthrough of how ViewIt works.
+            </h2>
+            <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
+              ViewIt connects merchant onboarding, product publishing, immersive product discovery, and engagement analytics in one flow. Merchants create a studio, verify access, upload products and 3D assets, then buyers and curators explore those products in an interactive spatial storefront while admins monitor interaction performance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+            <div className="rounded-[36px] bg-[#0a0a0c] border border-white/[0.05] p-8 md:p-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {workflowSteps.map((step, index) => (
+                  <div
+                    key={step.eyebrow}
+                    className="rounded-[28px] bg-white/[0.02] border border-white/[0.04] p-7 hover:border-white/15 transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-11 h-11 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-gray-300">
+                        <step.icon className="h-5 w-5" />
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-600 uppercase tracking-[0.25em]">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.22em] mb-3">
+                      {step.eyebrow}
+                    </p>
+                    <h3 className="text-xl text-white font-medium tracking-tight mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="rounded-[36px] bg-[#0a0a0c] border border-white/[0.05] p-8 md:p-10">
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-white mb-6">
+                  <Store className="h-5 w-5" />
+                </div>
+                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.22em] mb-3">
+                  Merchant Journey
+                </p>
+                <h3 className="text-2xl font-medium tracking-tight text-white mb-4">
+                  From account creation to 3D-ready publishing.
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  The merchant flow in this project starts at registration, continues through email verification, then moves into product setup where media, pricing, publishing status, and `.glb` files are managed from the studio dashboard.
+                </p>
+              </div>
+
+              <div className="rounded-[36px] bg-[#0a0a0c] border border-white/[0.05] p-8 md:p-10">
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-white mb-6">
+                  <ScanSearch className="h-5 w-5" />
+                </div>
+                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.22em] mb-3">
+                  Buyer / Curator Journey
+                </p>
+                <h3 className="text-2xl font-medium tracking-tight text-white mb-4">
+                  Explore the product visually before making a decision.
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                  Buyers and curators reach products through the marketplace or a merchant store page, then switch into 3D view, inspect details, engage with hotspots, and use AR-enabled viewing when a model is available.
+                </p>
+                <div className="rounded-[28px] bg-white/[0.02] border border-white/[0.04] p-6">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Shield className="h-4 w-4 text-white" />
+                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.22em]">Why This Matters</span>
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    This flow helps merchants present products with more context and helps buyers evaluate form, detail, and fit through a more immersive viewing experience than static images alone.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-[36px] bg-[#0a0a0c] border border-white/[0.05] p-8 md:p-10">
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-white mb-6">
+                  <BarChart3 className="h-5 w-5" />
+                </div>
+                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.22em] mb-3">
+                  Admin Insights
+                </p>
+                <h3 className="text-2xl font-medium tracking-tight text-white mb-4">
+                  The best place to show AR views, product views, and hotspot clicks.
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  This fits naturally in the admin or merchant analytics dashboard because that is where platform performance is reviewed. It can summarize total AR experiences launched, overall product page views, and hotspot click activity per product or per merchant.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-32 px-6 bg-[#050505] relative overflow-hidden">
         <div className="absolute inset-0 bg-white/[0.02] mix-blend-screen pointer-events-none" />
@@ -219,10 +381,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-// Stub for BarChart3 which might be missing from direct imports above if they vary by version
-const BarChart3 = ({ className }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-  </svg>
-);

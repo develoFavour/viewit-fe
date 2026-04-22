@@ -350,6 +350,26 @@ export default function StoreProductPage() {
                   </div>
                 </div>
               </div>
+
+              <Link
+                href="/#workflow"
+                className="w-full flex items-center justify-between p-6 bg-white/[0.03] border border-white/[0.06] rounded-[28px] hover:bg-white/[0.05] hover:border-white/12 transition-all group"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-600/10 border border-blue-600/20 rounded-2xl flex items-center justify-center text-blue-500">
+                    <Sparkles className="h-5 w-5" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.22em] mb-1">
+                      Product Guide
+                    </p>
+                    <p className="text-sm font-bold text-white">
+                      Want to know how ViewIt works?
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight className="h-5 w-5 text-gray-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+              </Link>
             </div>
 
             {/* Merchant Identity Card */}
